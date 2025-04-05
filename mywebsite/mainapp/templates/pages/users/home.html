@@ -1,0 +1,275 @@
+{% extends 'pages/users/base.html' %}
+{% block content %}
+{% load static %}
+<!-- Hero Section -->
+<section id="hero" class="hero section dark-background">
+  <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+      {% for slide in sliders %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <img src="{{ slide.image.url }}" alt="">
+          <div class="container">
+            <h2>{{ slide.title }}</h2>
+            <p>{{ slide.sub_title | safe }}</p>
+            {% if slide.link %}
+              <a href="{{ slide.link }}" class="btn-get-started">Read More</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+
+
+    <!-- Carousel Controls -->
+    <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+    </a>
+    
+    <!-- Carousel Indicators -->
+    <ol class="carousel-indicators"></ol>
+
+  </div>
+</section><!-- /Hero Section -->
+
+
+
+
+    <!-- About Section -->
+     {% for s in story%}
+    <section id="about" class="about section">
+
+      <div class="container">
+
+        <div class="row position-relative">
+
+          <div class="col-lg-7 about-img" data-aos="zoom-out" data-aos-delay="200">
+            <img src="{{ s.image.url }}" class="img-about">
+          </div>
+
+          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="inner-title">{{ s.title }}</h2>
+            <div class="our-story">
+             
+              <p style="text-align: justify;">{{ s.description | safe }}</p>
+              
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+{% endfor %}
+
+
+<!-- About2 Section -->
+ {% for c in choose %}
+<section id="about-2" class="about-2 section">
+
+    <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <img src="{{ c.image.url }}" alt="Image " class="img-fluid img-overlap" data-aos="zoom-out">
+          </div>
+          <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="content-subtitle text-white opacity-30">{{ c.title }}</h3>
+            <p class="opacity-10" style="text-align: justify;">
+              {{ c.description | safe }}
+            </p>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- /About2 Section -->
+{% endfor %}
+
+
+
+<!-- Services 2 Section -->
+<section id="services-2" class="services-2 section custom-bg">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2 style="padding-top: 40px;">Our Services</h2>
+  </div><!-- End Section Title -->
+
+  <div class="services-carousel-wrap">
+    <div class="container">
+      <div class="swiper init-swiper">
+        <script type="application/json" class="swiper-config">
+          {
+            "loop": true,
+            "speed": 600,
+            "autoplay": {
+              "delay": 5000
+            },
+            "slidesPerView": "auto",
+            "pagination": {
+              "el": ".swiper-pagination",
+              "type": "bullets",
+              "clickable": true
+            },
+            "navigation": {
+              "nextEl": ".js-custom-next",
+              "prevEl": ".js-custom-prev"
+            },
+            "breakpoints": {
+              "320": {
+                "slidesPerView": 1,
+                "spaceBetween": 40
+              },
+              "1200": {
+                "slidesPerView": 3,
+                "spaceBetween": 40
+              }
+            }
+          }
+        </script>
+
+        <button class="navigation-prev js-custom-prev">
+          <i class="bi bi-arrow-left-short"></i>
+        </button>
+        <button class="navigation-next js-custom-next">
+          <i class="bi bi-arrow-right-short"></i>
+        </button>
+
+        <div class="swiper-wrapper">
+          {% for sev in service %}
+          <div class="swiper-slide">
+            <div class="service-item">
+              <div class="service-item-contents">
+                <a href="#">
+                  <span class="service-item-category">We do</span>
+                  <h2 class="service-item-title">{{ sev.description|safe }}</h2>
+                </a>
+              </div>
+              <img src="{{ sev.image.url }}" alt="Image" class="img-fluid">
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section><!-- /Services 2 Section -->
+
+
+    <!-- Recent Posts Section -->
+    <section id="recent-posts" class="recent-posts section">
+
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Recent Posts</h2>
+        </div><!-- End Section Title -->
+  
+        <div class="container">
+  
+          <div class="row gy-5">
+  
+            {% for n in news %}
+            <div class="col-xl-4 col-md-6">
+              <div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+  
+                <div class="post-img position-relative overflow-hidden">
+                  <img src="{{ n.image.url }}" class="img-fluid" alt="">
+                  <span class="post-date">{{ n.date }}</span>
+                </div>
+  
+                <div class="post-content d-flex flex-column">
+  
+                  <h3 class="post-title">{{ n.title }}</h3>
+  
+                  
+  
+                  <hr>
+  
+                  <a href="{% url 'news_details' n.id %}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+  
+                </div>
+  
+              </div>
+            </div><!-- End post item -->
+            {% endfor %}
+        <!--pagination-->
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            {% if news.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page=1#recent-posts">&laquo; First</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ news.previous_page_number }}#recent-posts">‹ Prev</a>
+              </li>
+            {% endif %}
+        
+            <li class="page-item disabled">
+              <span class="page-link">Page {{ news.number }} of {{ news.paginator.num_pages }}</span>
+            </li>
+        
+            {% if news.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ news.next_page_number }}#recent-posts">Next ›</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="?page={{ news.paginator.num_pages }}#recent-posts">Last &raquo;</a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      <!--endpagination-->
+
+  
+          </div>
+  
+        </div>
+  
+     </section><!-- /Recent Posts Section -->
+
+
+  <!-- FAQ Section -->
+<section id="faq" class="faq section bg-light py-5">
+  <div class="container" data-aos="fade-up">
+
+    <!-- Section Title -->
+    <div class="section-title text-center mb-5">
+      <h2>Frequently Asked Questions</h2>
+      <p>Here are answers to some common questions</p>
+    </div>
+
+    <div class="accordion accordion-flush" id="faqAccordion">
+
+      {% for f in freq %}
+      <div class="accordion-item mb-3 shadow-sm rounded">
+        <h2 class="accordion-header" id="faq-heading-{{ forloop.counter }}">
+          <button class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faq-collapse-{{ forloop.counter }}"
+                  aria-expanded="false"
+                  aria-controls="faq-collapse-{{ forloop.counter }}">
+            {{ f.question }}
+          </button>
+        </h2>
+        <div id="faq-collapse-{{ forloop.counter }}"
+             class="accordion-collapse collapse"
+             aria-labelledby="faq-heading-{{ forloop.counter }}"
+             data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            {{ f.answer|safe }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+{% endblock %}

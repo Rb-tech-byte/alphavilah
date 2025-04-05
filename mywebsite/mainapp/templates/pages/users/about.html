@@ -1,0 +1,121 @@
+{% extends 'pages/users/base.html' %}
+{% block content %}
+{% load static %}
+<!-- Page Title -->
+<div class="page-title dark-background" data-aos="fade" style="background-image: url({% static 'assets/img/page-title-bg.webp' %});">
+    <div class="container position-relative">
+      <h1>About</h1>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="current">About</li>
+        </ol>
+      </nav>
+    </div>
+  </div><!-- End Page Title -->
+
+  <!-- About 3 Section -->
+   {% for w in why %}
+  <section id="about-3" class="about-3 section custom-bg">
+
+    <div class="container">
+      <div class="row gy-4 justify-content-between align-items-center">
+        <div class="col-lg-6 order-lg-2 position-relative" data-aos="zoom-out">
+          <img src="{{ w.image.url }}" alt="Image" class="img-fluid image-radius">
+         
+        </div>
+        <div class="col-lg-5 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+          <h2 class="content-title mb-4">{{ w.title }}</h2>
+          <p class="mb-4 text-style">
+            {{ w.description | safe }}
+          </p>
+        
+          <p><a href="{% url 'contact_page' %}" class="btn-cta">Get in touch</a></p>
+        </div>
+      </div>
+    </div>
+  </section><!-- /About 3 Section -->
+{% endfor %}
+  
+  <!-- Mission Section -->
+{% for m in miss %}
+<section id="about-3" class="about-3 section">
+  <div class="container">
+    <div class="row gy-4 justify-content-between align-items-center">
+
+      <!-- Image on the left -->
+      <div class="col-lg-6 order-lg-1 position-relative" data-aos="zoom-out">
+        <img src="{{ m.image.url }}" alt="Image" class="img-fluid image-radius">
+      </div>
+
+      <!-- Text on the right -->
+      <div class="col-lg-5 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="content-title mb-4">{{ m.title }}</h2>
+        <p class="mb-4 text-style">
+          {{ m.description | safe }}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endfor %}
+<!-- /mission Section -->
+
+
+<!-- Vision Section -->
+ {% for v in vis %}
+<section id="about-3" class="about-3 section customs-bg">
+  <div class="container">
+    <div class="row gy-4 justify-content-between align-items-center">
+
+      <!-- Image on the left -->
+      <div class="col-lg-6 order-lg-2 position-relative" data-aos="zoom-out">
+        <img src="{{v.image.url}}" alt="Image" class="img-fluid image-radius">
+      </div>
+
+      <!-- Text on the right -->
+      <div class="col-lg-5 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="content-title mb-4">{{ v.title }}</h2>
+        <p class="mb-4 text-style">
+          {{ v.description | safe }}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endfor %}
+<!-- /Vision Section -->
+
+
+  <!-- Services Section -->
+  <section id="services" class="services section">
+
+    
+     <!-- Section Title -->
+    {% for value in values %}
+     <div class="container section-title" data-aos="fade-up">
+      <h2>{{ value.title }}</h2>
+      <div class="value-description p-4 mt-3 rounded shadow-sm">
+        <p class="mb-0">{{ value.description | safe }}</p>
+      </div>
+    </div>
+    {% endfor %}
+    <!-- End Section Title -->
+    
+       <!-- Section Title -->
+    {% for w in item %}
+    <div class="container section-title" data-aos="fade-up">
+        <h2>{{ w.title }}</h2>
+        <div class="value-description p-4 mt-3 rounded shadow-sm">
+          <p class="mb-0">{{ w.description | safe }}</p>
+        </div>
+    </div>
+    {% endfor %}
+    <!-- End Section Title -->
+      
+
+  </section><!-- /Services Section -->
+
+{% endblock %}

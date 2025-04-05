@@ -1,0 +1,172 @@
+<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+      <!-- Add icons to the links using the .nav-icon class
+           with font-awesome or any other icon font library -->
+      <li class="nav-item menu-open">
+        <a href="{% url 'admin_home' %}" class="nav-link {% if request.path == '/admin_home' %}active{% endif %}">
+          <i class="nav-icon fas fa-tachometer-alt"></i>
+          <p>
+            Dashboard
+          </p>
+        </a>
+        
+      </li>
+      <div class="dropdown-divider"></div>
+
+      <!--home links-->
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-book"></i>
+          <p>
+            Home Links
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{% url 'sliders' %}" class="nav-link {% if request.path == '/sliders' %}active{% endif %}">
+              <i class="far fa-circle nav-icon"></i>
+              <p>
+                Sliders
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'story_page' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Story</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'choose_page' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Choose Us</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'service' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Services</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'news_update' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>News</p>
+            </a>
+          </li>
+
+          
+          <li class="nav-item">
+            <a href="{% url 'question_page' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Faqs</p>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      <div class="dropdown-divider"></div>
+      <!--home links-->
+
+      <!--About links-->
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-book"></i>
+          <p>
+           About Links
+            <i class="fas fa-angle-left right"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="{% url 'mission_page' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Mission</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'vision_page' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Vision</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'value_page' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Values</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'where_page' %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p>Where we are</p>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      <div class="dropdown-divider"></div>
+      <!--About links-->
+
+      <!--products-->
+      <li class="nav-item">
+        <a href="{% url 'product_page' %}" class="nav-link {% if request.path == '/product_page' %}active{% endif %}">
+          <i class="nav-icon nav-icon fas fa-book"></i>
+          <p>
+            Products
+          </p>
+        </a>
+        
+      </li>
+      <div class="dropdown-divider"></div>
+      <!--products-->
+
+
+      <!--contact-->
+      <li class="nav-item">
+        <a href="{% url 'admin_contact' %}" class="nav-link {% if request.path == '/admin_contact' %}active{% endif %}">
+          <i class="nav-icon nav-icon fas fa-book"></i>
+          <p>
+           Contact
+          </p>
+        </a>
+        
+      </li>
+      <div class="dropdown-divider"></div>
+      <!--contact-->
+      <!--address-->
+      <li class="nav-item">
+        <a href="{% url 'address_path' %}" class="nav-link {% if request.path == '/address_path' %}active{% endif %}">
+          <i class="nav-icon nav-icon fas fa-book"></i>
+          <p>
+           Address
+          </p>
+        </a>
+        
+      </li>
+      <div class="dropdown-divider"></div>
+      <!--address-->
+
+      <!--Logout-->
+      <li class="nav-item" style="background-color: rgb(244, 41, 41);color: white;font-weight: bolder;">
+        <a href="{% url 'logoutUser' %}" class="nav-link">
+          <i class="nav-icon nav-icon fas fa-book"></i>
+          <p>
+          Logout
+          </p>
+        </a>
+        
+      </li>
+      <div class="dropdown-divider"></div>
+      <!--logout-->
+    </ul>
+
+
+  </nav>
+  <!-- /.sidebar-menu -->
+</div>
