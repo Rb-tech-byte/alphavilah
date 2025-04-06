@@ -9,8 +9,8 @@
   <meta name="keywords" content="ALPHAVILAH,alphavilah,vegetables,fruits,Flour">
 
   <!-- Favicons -->
-  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
-  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link href="{% static 'assets/img/logo33.png' %}" rel="icon">
+  <link href="{% static 'assets/img/logo33.png' %}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -43,7 +43,7 @@
 }
 .customs-bg{
   background: url("{% static 'assets/img/back3.jpg' %}") no-repeat center center;
-  background-size: cover; /* or 'contain' depending on your design */
+  background-size: cover; /* or 'contain' depending on 1our design */
   position: relative;
   z-index: 1;
 }
@@ -186,10 +186,10 @@
             <p><strong>Email:</strong> <span>alphavilah23@gmail.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-twitter-x"></i></a>
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+            <a href="#"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
@@ -203,18 +203,17 @@
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
+          <h4>Quick Links</h4>
           <ul>
-            <li><a href="#">Food Exportation</a></li>
-            <li><a href="#">Food Processing</a></li>
-            <li><a href="#">Fruits Exportation</a></li>
-            <li><a href="#">Vegetable Exportation</a></li>
+            <li><a href="{% url 'products_page' %}">Products</a></li>
+            <li><a href="{% url 'service_page' %}">Services</a></li>
+            <li><a href="{% url 'contact_page' %}">Contact</a></li>
           </ul>
         </div>
 
         <div class="col-lg-4 col-md-12 footer-newsletter">
           <h4>Our Newsletter</h4>
-          <form action="#" method="post" class="#">
+          <form action="#" method="#" class="#">
             <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
             
           </form>
@@ -224,9 +223,17 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Alphavilah</strong> <span>All Rights Reserved</span></p>
-      
+      <p>© <span>Copyright</span> 
+        <strong class="px-1 sitename" id="current-year"></strong> 
+        <span>All Rights Reserved</span>
+      </p>
     </div>
+    
+    <script>
+      // This script will set the current year dynamically
+      document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+
 
   </footer>
 

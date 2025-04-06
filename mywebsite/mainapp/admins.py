@@ -293,7 +293,7 @@ def news_update(request):
 def edit_news_update(request,id):
     news = News.objects.get(id=id)
     if request.method == 'POST':
-        form = NewsForm(request.POST or None,instance=news)
+        form = NewsForm(request.POST or None,request.FILES or None,instance=news)
         if form.is_valid():
             form.save()
             messages.success(request,'News updated successfully')
@@ -417,6 +417,65 @@ def delete_mission(request, id):
     mission.delete()
     messages.success(request, 'Mission deleted successfully!')
     return redirect('mission_page')
+
+
+
+@login_required(login_url='login_user')
+@admin_only
+def whyus_page(request):
+    # Fetch all the WhyUs entries
+    item = WhyUs.objects.all()
+    
+    if request.method == 'POST':
+        form = WhyUsForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'WhyUs entry saved successfully')
+        else:
+            messages.error(request, 'Something went wrong')
+        return redirect('whyus_page')  # Redirect to the same page to show updated list
+    else:
+        form = WhyUsForm()
+    
+    context = {
+        'form': form,
+        'item': item,
+    }
+    return render(request, 'pages/admins/whyus.html', context)
+
+
+
+@login_required(login_url='login_user')
+@admin_only
+def edit_whyus(request, id):
+    # Fetch the WhyUs entry by ID
+    whyus = get_object_or_404(WhyUs, id=id)
+    
+    if request.method == 'POST':
+        form = WhyUsForm(request.POST or None, request.FILES or None, instance=whyus)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'WhyUs entry updated successfully')
+        else:
+            messages.error(request, 'Something went wrong')
+        return redirect('whyus_page')  # Redirect to the page that lists all WhyUs entries
+    else:
+        form = WhyUsForm(instance=whyus)
+    
+    context = {
+        'form': form,
+    }
+    return render(request, 'pages/admins/edit-whyus.html', context)
+
+
+@login_required(login_url='login_user')
+@admin_only
+def delete_whyus(request, id):
+    # Fetch the WhyUs entry by ID
+    whyus = get_object_or_404(WhyUs, id=id)
+    whyus.delete()
+    messages.success(request, 'WhyUs entry deleted successfully!')
+    return redirect('whyus_page')  # Redirect to the page that lists all WhyUs entries
 
 
 

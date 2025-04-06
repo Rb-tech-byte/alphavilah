@@ -35,6 +35,8 @@ class StoryForm(ModelForm):
         }
     
 
+
+
 class ChooseUsForm(ModelForm):
     class Meta:
         model = ChooseUs
@@ -88,6 +90,22 @@ class FaqForm(ModelForm):
             'question':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter title','required':'required'}),
             'answer':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter description','required':'required'}),
         }
+
+
+class WhyUsForm(ModelForm):
+    class Meta:
+        model = WhyUs
+        fields=['title','description','image']
+
+        widgets = {
+            'title':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter  title','required':'required'}),
+            'description':forms.Textarea(attrs={'class':'form-control','placeholder':'Enter  description','required':'required'}),
+            'image':forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }
+    
+
+
+
 
 class MissionForm(ModelForm):
     class Meta:

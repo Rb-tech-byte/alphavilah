@@ -40,6 +40,10 @@ urlpatterns=[
     path('faqs/',admins.question_page, name='question_page'),
     path('faqs/edit/<int:id>/',admins.edit_question, name='edit_question'),
     path('faqs/delete/<int:id>/',admins.delete_question, name='delete_question'),
+    #why us
+    path('whyus_page',admins.whyus_page,name='whyus_page'),
+    path('edit_whyus/<int:id>',admins.edit_whyus,name='edit_whyus'),
+    path('delete_whyus/<int:id>',admins.delete_whyus,name='delete_whyus'),
     #mission
     path('mission_page',admins.mission_page,name='mission_page'),
     path('edit_mission/<int:id>',admins.edit_mission,name='edit_mission'),
