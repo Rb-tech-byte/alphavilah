@@ -69,6 +69,7 @@
                     <tr>
                       <th>Description</th>
                       <th>image</th>
+                      <th>Date</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -77,6 +78,7 @@
                       <tr>
                           <td>{{ s.description | safe }}</td>
                           <td><img src="{{ s.image.url }}" alt="" style="width: 100px;height: 70px;"></td>
+                          <td>{{ s.date }}</td>
                           <td style="display:flex;">
                               <a href="{% url 'edit_service' s.id %}" class="btn btn-success" style="margin-right: 10px;">Edit</a>
                               <a onclick="return confirm('Are you you want to delete?')" href="{% url 'delete_service' s.id %}" class="btn btn-danger">Delete</a>

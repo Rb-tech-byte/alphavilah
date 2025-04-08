@@ -10,7 +10,10 @@ from datetime import timedelta
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user,allowed_users,admin_only
-
+#change password
+from django.contrib.auth.views import PasswordChangeView
+from .forms import PasswordChangeCustomForm
+from django.urls import reverse_lazy
 
 
 
@@ -35,6 +38,12 @@ def login_user(request):
 def logoutUser(request):
     logout(request)
     return redirect('login_user')
+
+#change password class
+class CustomPasswordChangeView(PasswordChangeView):
+    form_class = PasswordChangeCustomForm
+    template_name = 'pages/admins/change-password.html'
+    success_url = reverse_lazy('password_change_done')
 
 
 @login_required(login_url='login_user')
@@ -64,7 +73,7 @@ def admin_home(request):
 @login_required(login_url='login_user')
 @admin_only
 def sliders(request):
-    slider = Slider.objects.all()
+    slider = Slider.objects.all().order_by('-date')
     if request.method == 'POST':
         form = SliderForm(request.POST or None,request.FILES or None)
         if form.is_valid():
@@ -322,7 +331,7 @@ def delete_news_update(request,id):
 @login_required(login_url='login_user')
 @admin_only
 def question_page(request):
-    faqs = Faq.objects.all()
+    faqs = Faq.objects.all().order_by('-date')
     if request.method == 'POST':
         form = FaqForm(request.POST or None)
         if form.is_valid():

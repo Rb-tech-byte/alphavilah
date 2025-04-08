@@ -30,8 +30,8 @@ def home(request):
     sliders = Slider.objects.all()
     story = Story.objects.all()
     choose = ChooseUs.objects.all()
-    service = Service.objects.all()
-    freq = Faq.objects.all()
+    service = Service.objects.all().order_by('-date')
+    freq = Faq.objects.all().order_by('-date')
     
     # Track visitor per day
     ip = get_client_ip(request)

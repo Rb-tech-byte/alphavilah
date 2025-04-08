@@ -90,8 +90,12 @@ WSGI_APPLICATION = 'mywebsite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'alphavilah',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 
@@ -126,6 +130,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+#Auth
+LOGIN_URL = 'login_user'
+LOGIN_REDIRECT_URL = 'admin_home'
+LOGOUT_REDIRECT_URL = 'login_user'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
